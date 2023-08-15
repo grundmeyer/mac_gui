@@ -21,8 +21,8 @@ def printingTwo(myString):
             stringOne = ""
     myList = ["", ":", "-"]
     for i in myList:
-        bigString += i.join(listOne)
-        bigString += (i.join(listOne)).upper()
+        bigString += "\n" + (i.join(listOne)).lower()
+        bigString += "\n" + (i.join(listOne)).upper()
     return bigString
 
 def returnText(enteredMac):
@@ -37,14 +37,14 @@ def returnText(enteredMac):
 
 def handle_keypress(event, entry_window, result_label):
     mac = entry_window.get()
-    result_label.config(text=mac + "\n" + returnText(mac))
+    result_label.insert(1.0, mac + "\n" + returnText(mac))
 
 def main():
     window = tk.Tk()
     greeting = tk.Label(text="Enter a MAC")
     entry = tk.Entry()
-    result = tk.Label()
-
+    result = tk.Text()
+    
     greeting.pack()
     entry.pack()
     result.pack()
@@ -52,6 +52,7 @@ def main():
 
     # ChatGPT helped here
     entry.bind("<Return>", lambda event: handle_keypress(event, entry, result))
+    result.configure(state="normal")
     window.mainloop()
 
 if __name__ == "__main__":
