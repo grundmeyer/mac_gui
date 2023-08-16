@@ -19,9 +19,9 @@ def printing(mac):
             stringCisco = ""
     myList = ["", ":", "-"]
     for i in myList:
-        bigString += "\n" + (i.join(listOne))
+        bigString += "\n" + ((i.join(listOne)).lower())
         bigString += "\n" + ((i.join(listOne)).upper())
-    bigString += "\n" + (".".join(listCisco))
+    bigString += "\n" + ((".".join(listCisco)).lower())
     bigString += "\n" + ((".".join(listCisco)).upper())
     return bigString
 
