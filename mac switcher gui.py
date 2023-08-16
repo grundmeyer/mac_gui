@@ -42,19 +42,19 @@ def returnText(enteredMac):
 def handle_keypress(event, entry_window, result_label):
     mac = entry_window.get()
     result_label.delete(1.0, tk.END)
-    result_label.insert(1.0, returnText(mac))
+    result_label.tag_configure("center", justify="center")
+    result_label.insert(1.0, returnText(mac), "center")
 
 def main():
     window = tk.Tk()
     window.title("MAC Address Converter")
     greeting = tk.Label(text="Enter a MAC")
     entry = tk.Entry()
-    result = tk.Text()
+    result = tk.Text(height=10, width= 50, padx=25, pady=10, font=("Consolas", 11))
     
     greeting.pack()
     entry.pack()
     result.pack()
-    mac = entry.get()
 
     # ChatGPT helped here
     entry.bind("<Return>", lambda event: handle_keypress(event, entry, result))
